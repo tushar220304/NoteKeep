@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>NoteKeep</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'notekeep/style.css' %}">
+	<script type="text/javascript" src="{% static 'notekeep/jquery-1.6.4.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'notekeep/index.js' %}"></script>
+</head>
+<body>
+	<div class="notification d-none">
+		<span class="notification-title">Date Saved</span>
+	</div>
+	<div class="add-new">
+		<img height="60px" width="60px" src="{% static 'notekeep/plus.png' %}">
+		<span>Compose</span>
+	</div>
+	<div class="view-modal d-none">
+		<span class="cross">&#10005;</span>
+		<label for="title">Title : </label>
+		<input type="text" id="title" name="Title" placeholder="Enter Title Here">
+		<br>
+		<label for="tagline">Tagline : </label>
+		<input id="tagline" type="text" name="Tagline" placeholder="Your Tagline Here"><br>
+		<label for="body">Body</label>
+		<textarea rows="8" id="body" name="body" placeholder="Your Notes Here"></textarea><br>
+		<label for="pin">Pin It</label>
+		<input id="pin" name="pinned" type="checkbox">
+		<a class="sbt-btn">Save</a>
+	</div>
+	<div class="web-title">NoteKeep</div>
+	<div class="notes-container">
+		<h3>Latest Pinned Notes</h3>
+			<div class="pinned">
+			</div>
+		<h3>All Notes</h3>
+		<div class="all">
+			<div class="pagination">
+				<a id="prevBtn" class="deactive-pageBtn">Previous</a>
+				<a id="prevPage" class="d-none"></a>
+				<a id="currPage" class="active"></a>
+				<a id="nextPage" class="d-none"></a>
+				<a id="nextBtn" class="">Next</a>
+			</div>
+		</div>
+	</div>
+	<script src="{% static 'notekeep/js.cookie.min.js' %}"></script>
+	<script type="text/javascript">
+		var documentImg = "{% static 'notekeep/document.png' %}";
+		var unpinImg = "{% static 'notekeep/unpin-img.png' %}";
+		var pinImg = "{% static 'notekeep/pin.png' %}";
+		var csrftoken = Cookies.get('csrftoken');
+		function csrfSafeMethod(method) {
+			// these HTTP method dod not require CSRF Protection
+			return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+		}
+		$.ajaxSetup({
+			beforeSend: function(xhr, settings) {
+				if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+					xhr.setRequestHeader("X-CSRFToken", csrftoken);
+				}
+			}
+		});
+	</script>
+</body>
+</html>
