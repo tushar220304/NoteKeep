@@ -1,0 +1,217 @@
+* {
+	margin: 0;
+	padding: 0;
+	color: white;
+}
+
+body {
+	background-color: #1e1e2c;
+}
+
+.d-none {
+	display: none !important;
+}
+
+.web-title {
+	background-color: #2dadfc;
+	font-size: large;
+	font-weight: bolder;
+	padding: 10px;
+	width: 200px;
+	margin-inline: auto;
+	color: #1e1e2c;
+	text-transform: uppercase;
+	text-align: center;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	box-shadow: 0px 3px 2px 1px rgba(255, 255, 255, 0.4);
+}
+
+.notes-container {
+	margin: min(7%);
+	margin-bottom: 0;
+	margin-inline: auto;
+	padding: 10px;
+	border: 1px solid white;
+	display: flex;
+	flex-direction: column;
+}
+
+.notes {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	padding: 5px;
+	animation-name: fade;
+	animation-duration: 1s;
+}
+
+.item {
+	border: 1px solid grey;
+	border-radius: 15px;
+	height: 50px;
+	width: 200px;
+	padding: 5px;
+	margin: 8px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.item .pinned-img {
+	height: 20px;
+	width: 20px;
+	margin-left: auto;
+}
+
+.item:hover {
+	background-color: #2a2c3e;
+	cursor: pointer;
+}
+
+.pagination {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.pagination a {
+	background-color: #2a2c3e;
+	padding: 5px 10px;
+	text-decoration: none;
+	margin-right: 5px;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+a.active {
+	background-color: #0277fa;
+}
+
+.view-modal {
+	position: absolute;
+	padding: 15px;
+	padding-top: 25px;
+	width: min(45%);
+	height: 420px;
+	border: 1px solid yellow;
+	top: 20%;
+	bottom: 10%;
+	left: 0; 
+	right: 0; 
+	margin-left: auto; 
+	margin-right: auto;
+	border-radius: 20px;
+	background-color: #2f3142;
+	overflow-y: scroll;
+	z-index: 1;
+	animation-name: openModal;
+	animation-duration: 0.6s;
+}
+
+.view-modal::-webkit-scrollbar {
+  display: none;
+}
+
+.cross {
+	position: absolute;
+	color: white;
+	font-size: 30px;
+	right: 13px;
+	top: -3px;
+	cursor: pointer;
+}
+
+input[type=text], textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: black;
+}
+
+.sbt-btn {
+	padding: 8px 15px;
+	background-color: #0277fa;
+	font-size: larger;
+	font-weight: bolder;
+	text-decoration: none;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	margin-top: 5px;
+	cursor: pointer;
+}
+
+.deactive-pageBtn {
+	color: rgb(136, 136, 136);
+	cursor: default !important;
+}
+
+.add-new {
+	position: absolute;
+	padding: 5px;
+	display: flex;
+	justify-content: center;
+	border: 2px solid grey;
+	top: 20px;
+	left: 20px;
+	border-radius: 15px;
+	background-color: #1e1e2c;
+}
+
+.add-new:hover {
+	background-color: #2a2c3e;
+	cursor: pointer;
+}
+
+.add-new span {
+	align-self: center;
+	margin-left: 15px;
+	font-size: large;
+	font-weight: bold;
+}
+
+.notification {
+	position: absolute;
+	z-index: 1;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+	transform: translateY(-550px);
+	animation-name: notification;
+	animation-duration: 6s;
+}
+
+.notification span {
+	color: darkblue;
+	background-color: white;
+	border-radius: 25px;
+	padding: 15px;
+}
+
+
+@keyframes openModal {
+	0% {transform: translateY(-550px);}
+	100% {transform: translateY(0);}
+}
+
+@keyframes fade {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+
+@keyframes notification {
+	0% {transform: translateY(-550px);}
+	5% {transform: translateY(0);}
+	50% {transform: translateY(0);}
+	75% {transform: translateY(0);}
+	80% {transform: translateY(-200px);}
+	99% {transform: translateY(-550);}
+	100% {display: none;}
+}
